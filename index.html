@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Controle Financeiro Oceano do Dinheiro</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+/* FUNDO OCEANO */
+
+body{
+
+    padding:20px;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+    to bottom,
+    #001219 0%,
+    #002855 20%,
+    #003566 40%,
+    #00509d 70%,
+    #00b4d8 100%
+    );
+}
+
+/* luz oceano */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:-20%;
+    left:-20%;
+
+    width:140%;
+    height:140%;
+
+    background:
+    radial-gradient(
+    circle,
+    rgba(255,255,255,0.12) 0%,
+    transparent 60%
+    );
+
+    animation:
+    luzMar 10s ease-in-out infinite;
+
+    pointer-events:none;
+}
+
+/* ondas */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    left:0;
+    bottom:0;
+
+    width:200%;
+    height:220px;
+
+    background:
+    rgba(255,255,255,0.08);
+
+    border-radius:
+    45% 55% 70% 30% /
+    45% 30% 70% 55%;
+
+    animation:
+    ondas 12s linear infinite;
+
+    pointer-events:none;
+}
+
+@keyframes luzMar{
+
+    0%{
+        transform:
+        translate(0,0)
+        rotate(0deg);
+    }
+
+    50%{
+        transform:
+        translate(5%,3%)
+        rotate(2deg);
+    }
+
+    100%{
+        transform:
+        translate(0,0)
+        rotate(0deg);
+    }
+
+}
+
+@keyframes ondas{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-25%);
+    }
+
+}
+
+/* BOLHAS */
+
+.bolha{
+
+    position:fixed;
+
+    bottom:-100px;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,0.15);
+
+    animation:
+    subirBolha linear infinite;
+
+    pointer-events:none;
+}
+
+.b1{
+    width:20px;
+    height:20px;
+    left:10%;
+    animation-duration:12s;
+}
+
+.b2{
+    width:14px;
+    height:14px;
+    left:25%;
+    animation-duration:10s;
+}
+
+.b3{
+    width:28px;
+    height:28px;
+    left:40%;
+    animation-duration:14s;
+}
+
+.b4{
+    width:18px;
+    height:18px;
+    left:60%;
+    animation-duration:11s;
+}
+
+.b5{
+    width:22px;
+    height:22px;
+    left:80%;
+    animation-duration:15s;
+}
+
+@keyframes subirBolha{
+
+    0%{
+
+        transform:
+        translateY(0)
+        scale(1);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+        translateY(-120vh)
+        scale(1.4);
+
+        opacity:0;
+    }
+
+}
+
+/* DINHEIRO ANIMADO */
+
+.peixe{
+
+    position:fixed;
+
+    z-index:1;
+
+    pointer-events:none;
+
+    opacity:0.95;
+
+    filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+.peixe1{
+
+    top:18%;
+
+    left:-120px;
+
+    font-size:55px;
+
+    animation:
+    dinheiro1 20s linear infinite;
+}
+
+.peixe2{
+
+    top:50%;
+
+    left:-180px;
+
+    font-size:65px;
+
+    animation:
+    dinheiro2 28s linear infinite;
+}
+
+.peixe3{
+
+    top:75%;
+
+    left:-160px;
+
+    font-size:48px;
+
+    animation:
+    dinheiro3 22s linear infinite;
+}
+
+@keyframes dinheiro1{
+
+    0%{
+
+        transform:
+        translateX(0)
+        rotate(0deg);
+
+    }
+
+    100%{
+
+        transform:
+        translateX(150vw)
+        rotate(15deg);
+
+    }
+
+}
+
+@keyframes dinheiro2{
+
+    0%{
+
+        transform:
+        translateX(0)
+        rotate(0deg);
+
+    }
+
+    100%{
+
+        transform:
+        translateX(160vw)
+        rotate(-15deg);
+
+    }
+
+}
+
+@keyframes dinheiro3{
+
+    0%{
+
+        transform:
+        translateX(0)
+        rotate(0deg);
+
+    }
+
+    100%{
+
+        transform:
+        translateX(155vw)
+        rotate(10deg);
+
+    }
+
+}
+
+/* CONTAINER */
+
+.container{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    position:relative;
+
+    z-index:2;
+}
+
+/* TÍTULO */
+
+h1{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:white;
+
+    font-size:40px;
+
+    text-shadow:
+    0 0 15px rgba(255,255,255,0.5);
+}
+
+/* CARDS */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:15px;
+
+    margin-bottom:20px;
+}
+
+.card,
+.formulario,
+table{
+
+    background:
+    rgba(255,255,255,0.10);
+
+    backdrop-filter:
+    blur(14px);
+
+    -webkit-backdrop-filter:
+    blur(14px);
+
+    border:
+    1px solid rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 8px 32px rgba(0,0,0,0.35);
+
+    color:white;
+
+    border-radius:22px;
+}
+
+.card{
+    padding:20px;
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.valor{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:white;
+
+    text-shadow:
+    0 0 12px rgba(255,255,255,0.4);
+}
+
+.formulario{
+
+    padding:20px;
+
+    margin-bottom:20px;
+}
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:15px;
+}
+
+label{
+    color:white;
+}
+
+input,
+select{
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    border:
+    1px solid rgba(255,255,255,0.2);
+
+    background:
+    rgba(255,255,255,0.12);
+
+    color:white;
+}
+
+input::placeholder{
+    color:#e2e8f0;
+}
+
+option{
+    color:black;
+}
+
+/* BOTÕES */
+
+button{
+
+    background:
+    linear-gradient(
+    135deg,
+    #0077b6,
+    #00b4d8
+    );
+
+    color:white;
+
+    border:none;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    box-shadow:
+    0 4px 15px rgba(0,180,216,0.5);
+
+    transition:0.3s;
+}
+
+button:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 8px 20px rgba(0,180,216,0.7);
+}
+
+.btn-pago{
+
+    background:
+    linear-gradient(
+    135deg,
+    #16a34a,
+    #22c55e
+    );
+
+    margin-bottom:5px;
+}
+
+.btn-excluir{
+
+    background:
+    linear-gradient(
+    135deg,
+    #dc2626,
+    #ef4444
+    );
+}
+
+.btn-editar{
+
+    background:
+    linear-gradient(
+    135deg,
+    #f59e0b,
+    #fbbf24
+    );
+
+    margin-bottom:5px;
+}
+
+/* TABELA */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+}
+
+th{
+
+    background:
+    rgba(255,255,255,0.15);
+
+    padding:14px;
+
+    color:white;
+}
+
+td{
+
+    padding:12px;
+
+    text-align:center;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.1);
+
+    color:white;
+}
+
+tr:hover{
+
+    background:
+    rgba(255,255,255,0.08);
+}
+
+/* STATUS */
+
+.vencendo{
+    background:rgba(255,193,7,0.2)!important;
+}
+
+.atrasado{
+    background:rgba(255,0,0,0.2)!important;
+}
+
+.pago{
+    background:rgba(0,255,100,0.2)!important;
+}
+
+@media(max-width:768px){
+
+    table{
+        font-size:12px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BOLHAS -->
+
+<div class="bolha b1"></div>
+<div class="bolha b2"></div>
+<div class="bolha b3"></div>
+<div class="bolha b4"></div>
+<div class="bolha b5"></div>
+
+<!-- DINHEIRO ANIMADO -->
+
+<div class="peixe peixe1">💵</div>
+<div class="peixe peixe2">💸</div>
+<div class="peixe peixe3">💰</div>
+
+<div class="container">
+
+<h1>🌊 Controle Financeiro Oceano do Dinheiro</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>Total de Contas</h2>
+<div class="valor" id="totalContas">R$ 0,00</div>
+</div>
+
+<div class="card">
+<h2>Contas Pagas</h2>
+<div class="valor" id="totalPagas">R$ 0,00</div>
+</div>
+
+<div class="card">
+<h2>Contas Pendentes</h2>
+<div class="valor" id="totalPendentes">R$ 0,00</div>
+</div>
+
+<div class="card">
+<h2>Total Geral de Gastos do Mês</h2>
+<div class="valor" id="gastoTotal">R$ 0,00</div>
+</div>
+
+<div class="card">
+<h2>Total Final</h2>
+<div class="valor" id="totalFinal">R$ 0,00</div>
+</div>
+
+<div class="card">
+<h2>Histórico Pago</h2>
+<div class="valor" id="historicoPago">R$ 0,00</div>
+</div>
+
+</div>
+
+<div class="formulario">
+
+<div class="grid">
+
+<div>
+<label>Categoria</label>
+
+<select id="categoria">
+
+<option>Internet</option>
+<option>Conta d'Água</option>
+<option>Luz</option>
+<option>Energia Solar</option>
+<option>Alimentação</option>
+<option>Farmácia</option>
+<option>Vestuário</option>
+<option>Cartão de Crédito</option>
+<option>Outros</option>
+
+</select>
+</div>
+
+<div>
+<label>Descrição</label>
+
+<input
+type="text"
+id="descricao"
+placeholder="Ex: Internet Vivo">
+</div>
+
+<div>
+<label>Valor</label>
+
+<input
+type="number"
+id="valor"
+placeholder="0.00">
+</div>
+
+<div>
+<label>Mês</label>
+
+<input
+type="month"
+id="mes">
+</div>
+
+<div>
+<label>Vencimento</label>
+
+<input
+type="date"
+id="vencimento">
+</div>
+
+<div style="display:flex;align-items:end;">
+
+<button onclick="adicionarConta()">
+Adicionar Conta
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Categoria</th>
+<th>Descrição</th>
+<th>Valor</th>
+<th>Mês</th>
+<th>Vencimento</th>
+<th>Status</th>
+<th>Ações</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tabelaContas"></tbody>
+
+</table>
+
+</div>
+
+<script>
+
+let contas = [];
+
+let historicoPagamentos = [];
+
+function adicionarConta(){
+
+    const categoria =
+    document.getElementById("categoria").value;
+
+    const descricao =
+    document.getElementById("descricao").value;
+
+    const valor =
+    parseFloat(
+    document.getElementById("valor").value
+    );
+
+    const mes =
+    document.getElementById("mes").value;
+
+    const vencimento =
+    document.getElementById("vencimento").value;
+
+    if(
+        descricao === "" ||
+        isNaN(valor) ||
+        vencimento === ""
+    ){
+
+        alert("Preencha todos os campos!");
+
+        return;
+    }
+
+    contas.push({
+
+        categoria,
+        descricao,
+        valor,
+        mes,
+        vencimento,
+        pago:false
+
+    });
+
+    atualizarTabela();
+
+    document.getElementById("descricao").value = "";
+    document.getElementById("valor").value = "";
+}
+
+function atualizarTabela(){
+
+    const tabela =
+    document.getElementById("tabelaContas");
+
+    tabela.innerHTML = "";
+
+    let total = 0;
+    let pagas = 0;
+    let pendentes = 0;
+    let historicoTotal = 0;
+
+    contas.forEach((conta,index)=>{
+
+        total += conta.valor;
+
+        if(conta.pago){
+
+            pagas += conta.valor;
+
+        }else{
+
+            pendentes += conta.valor;
+        }
+
+        const hoje = new Date();
+
+        const venc =
+        new Date(conta.vencimento);
+
+        let classe = "";
+
+        if(conta.pago){
+
+            classe = "pago";
+
+        }else if(venc < hoje){
+
+            classe = "atrasado";
+
+        }else{
+
+            const diferenca =
+            (venc - hoje)/(1000*60*60*24);
+
+            if(diferenca <= 5){
+
+                classe = "vencendo";
+            }
+        }
+
+        tabela.innerHTML += `
+
+        <tr class="${classe}">
+
+            <td>${conta.categoria}</td>
+
+            <td>${conta.descricao}</td>
+
+            <td>
+            R$ ${conta.valor.toFixed(2)}
+            </td>
+
+            <td>${conta.mes}</td>
+
+            <td>
+            ${formatarData(conta.vencimento)}
+            </td>
+
+            <td>
+            ${conta.pago ? "Pago" : "Pendente"}
+            </td>
+
+            <td>
+
+            <button
+            class="btn-pago"
+            onclick="marcarPago(${index})">
+
+            ✔ Pago
+
+            </button>
+
+            <br>
+
+            <button
+            class="btn-editar"
+            onclick="editarVencimento(${index})">
+
+            📅 Alterar Vencimento
+
+            </button>
+
+            <br>
+
+            <button
+            class="btn-excluir"
+            onclick="excluirConta(${index})">
+
+            Excluir
+
+            </button>
+
+            </td>
+
+        </tr>
+
+        `;
+    });
+
+    historicoPagamentos.forEach(item=>{
+
+        historicoTotal += item.valor;
+
+    });
+
+    document.getElementById("historicoPago")
+    .innerHTML =
+    "R$ " + historicoTotal.toFixed(2);
+
+    document.getElementById("totalContas")
+    .innerHTML =
+    "R$ " + total.toFixed(2);
+
+    document.getElementById("totalPagas")
+    .innerHTML =
+    "R$ " + pagas.toFixed(2);
+
+    document.getElementById("totalPendentes")
+    .innerHTML =
+    "R$ " + pendentes.toFixed(2);
+
+    document.getElementById("gastoTotal")
+    .innerHTML =
+    "R$ " + total.toFixed(2);
+
+    let totalFinal = pendentes;
+
+    document.getElementById("totalFinal")
+    .innerHTML =
+    "R$ " + totalFinal.toFixed(2);
+}
+
+function marcarPago(index){
+
+    contas[index].pago = true;
+
+    historicoPagamentos.push({
+
+        categoria:
+        contas[index].categoria,
+
+        descricao:
+        contas[index].descricao,
+
+        valor:
+        contas[index].valor,
+
+        mes:
+        contas[index].mes,
+
+        vencimento:
+        contas[index].vencimento
+
+    });
+
+    atualizarTabela();
+}
+
+function excluirConta(index){
+
+    contas.splice(index,1);
+
+    atualizarTabela();
+}
+
+function editarVencimento(index){
+
+    let novaData = prompt(
+    "Digite a nova data de vencimento\nFormato: AAAA-MM-DD"
+    );
+
+    if(novaData){
+
+        contas[index].vencimento = novaData;
+
+        atualizarTabela();
+
+        alert("✅ Vencimento alterado com sucesso!");
+    }
+}
+
+function formatarData(data){
+
+    const partes = data.split("-");
+
+    return partes[2] + "/" +
+           partes[1] + "/" +
+           partes[0];
+}
+
+/* LEMBRETE 2 DIAS ANTES */
+
+function verificarLembretes(){
+
+    const hoje = new Date();
+
+    contas.forEach(conta=>{
+
+        if(conta.pago) return;
+
+        const vencimento =
+        new Date(conta.vencimento);
+
+        const diferenca =
+        Math.ceil(
+        (vencimento - hoje)
+        /(1000*60*60*24)
+        );
+
+        if(diferenca === 2){
+
+            alert(
+
+            "⚠ Atenção!\n\n" +
+
+            "A conta '" +
+
+            conta.descricao +
+
+            "' vence em 2 dias.\n" +
+
+            "Valor: R$ " +
+
+            conta.valor.toFixed(2)
+
+            );
+        }
+
+    });
+}
+
+setInterval(verificarLembretes,10000);
+
+</script>
+
+</body>
+</html>
